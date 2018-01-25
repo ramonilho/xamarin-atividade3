@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Atividade2_Xamarin
+namespace Atividade3_Xamarin
 {
     public class Student
     {

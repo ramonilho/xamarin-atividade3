@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-using Atividade2_Xamarin;
+using Atividade3_Xamarin;
 
-namespace Atividade2_Xamarin
+namespace Atividade3_Xamarin
 {
     public partial class StudentView : ContentPage
     {

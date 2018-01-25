@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace Atividade2_Xamarin
+namespace Atividade3_Xamarin
 {
     public class StudentViewModel : INotifyPropertyChanged
     {

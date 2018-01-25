@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace Atividade2_Xamarin.iOS
+namespace Atividade3_Xamarin.iOS
 {
     public class Application
     {

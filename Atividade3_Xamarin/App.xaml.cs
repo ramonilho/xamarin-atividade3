@@ -1,7 +1,7 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Atividade2_Xamarin
+namespace Atividade3_Xamarin
 {
     public partial class App : Application
     {

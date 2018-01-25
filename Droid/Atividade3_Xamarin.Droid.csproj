@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Xamarin.Forms.2.5.0.121934\build\netstandard1.0\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.121934\build\netstandard1.0\Xamarin.Forms.props')" />
   <PropertyGroup>
@@ -7,8 +7,8 @@
     <ProjectGuid>{2B396307-3E0C-49F5-9713-3A909511347E}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>Atividade2_Xamarin.Droid</RootNamespace>
-    <AssemblyName>Atividade2_Xamarin.Droid</AssemblyName>
+    <RootNamespace>Atividade3_Xamarin.Droid</RootNamespace>
+    <AssemblyName>Atividade3_Xamarin.Droid</AssemblyName>
     <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
@@ -108,9 +108,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Atividade2_Xamarin\Atividade2_Xamarin.csproj">
+    <ProjectReference Include="..\Atividade3_Xamarin\Atividade3_Xamarin.csproj">
       <Project>{32294AA2-1257-41AC-B7F6-C18EAC85D485}</Project>
-      <Name>Atividade2_Xamarin</Name>
+      <Name>Atividade3_Xamarin</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

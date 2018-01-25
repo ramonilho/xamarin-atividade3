@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 
-namespace Atividade2_Xamarin
+namespace Atividade3_Xamarin
 {
     public partial class NewStudentView : ContentPage
     {

@@ -1,11 +1,11 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atividade2_Xamarin", "Atividade2_Xamarin\Atividade2_Xamarin.csproj", "{32294AA2-1257-41AC-B7F6-C18EAC85D485}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atividade3_Xamarin", "Atividade3_Xamarin\Atividade3_Xamarin.csproj", "{32294AA2-1257-41AC-B7F6-C18EAC85D485}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atividade2_Xamarin.iOS", "iOS\Atividade2_Xamarin.iOS.csproj", "{C7373327-2A01-4DCF-BBC3-A906D6A28C8F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atividade3_Xamarin.iOS", "iOS\Atividade3_Xamarin.iOS.csproj", "{C7373327-2A01-4DCF-BBC3-A906D6A28C8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atividade2_Xamarin.Droid", "Droid\Atividade2_Xamarin.Droid.csproj", "{2B396307-3E0C-49F5-9713-3A909511347E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Atividade3_Xamarin.Droid", "Droid\Atividade3_Xamarin.Droid.csproj", "{2B396307-3E0C-49F5-9713-3A909511347E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
