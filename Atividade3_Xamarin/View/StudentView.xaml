@@ -1,16 +1,12 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="Atividade3_Xamarin.StudentView"
-    x:Title="FIAP List">
+    x:Class="Atividade3_Xamarin.StudentView">
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" x:Name="btnAddAluno" Command="{Binding OnNewCMD}" Order="Primary" Priority="1" />
-    </ContentPage.ToolbarItems>
-    
     <ContentPage.Content>
-        <StackLayout Padding="20">          
-            <Label Text="Student List" Font="18" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+        <StackLayout Padding="20">
+            <Button Text="ADD NEW" x:Name="btnAddStudent" Command="{Binding OnNewCMD}"/>
+            <Label Text="STUDENTS" Font="18" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
             <ListView 
                 x:Name="lstStudents" 
                 ItemsSource="{Binding Students}" >
@@ -27,6 +23,5 @@
             </ListView>
         </StackLayout>
     </ContentPage.Content>
-
 
 </ContentPage>

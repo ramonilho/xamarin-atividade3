@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -9,9 +11,15 @@ namespace Atividade3_Xamarin
 {
     public class StudentViewModel : INotifyPropertyChanged
     {
-        // -- Properties
+        // Properties
         public Student StudentModel { get; set; }
-        public ObservableCollection<Student> Students { get; set; } = new ObservableCollection<Student>();
+        public ObservableCollection<Student> Students
+        {
+            get
+            {
+                return new ObservableCollection<Student>(StudentModel.FetchStudentList());
+            }
+        }
 
         // UI Events
         public OnAddStudentCMD OnAddStudentCMD { get; }
@@ -26,16 +34,18 @@ namespace Atividade3_Xamarin
             OnNewCMD = new Command(OnNew);
         }
 
-        public void Add(Student paramAluno)
+        public void Add(Student paramStudent)
         {
             try
             {
-                if (paramAluno == null)
+                if (paramStudent == null)
                     throw new Exception("Invalid user");
 
-                paramAluno.Id = Guid.NewGuid();
+                paramStudent.Id = Guid.NewGuid();
 
-                Students.Add(paramAluno);
+                Students.Add(paramStudent);
+
+                App.StudentVM.StudentModel.Save(paramStudent);
 
                 App.Current.MainPage.Navigation.PopAsync();
             }
@@ -55,7 +65,7 @@ namespace Atividade3_Xamarin
             await App.Current.MainPage.Navigation.PushAsync(new NewStudentView() { BindingContext = App.StudentVM });
         }
 
-        // Event that listens changes in property
+        // Event that updates callers on changing some property
         public event PropertyChangedEventHandler PropertyChanged;
         private void EventPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -91,5 +101,7 @@ namespace Atividade3_Xamarin
             studentVM.Add(parameter as Student);
         }
     }
+
+
 
 }

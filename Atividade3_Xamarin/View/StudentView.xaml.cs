@@ -11,7 +11,13 @@ namespace Atividade3_Xamarin
         public StudentView()
         {
             InitializeComponent();
-            this.Title = "Exercise 2";
+            this.Title = "Exercise 3 - SQL";
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            this.lstStudents.ItemsSource = App.StudentVM.Students;
         }
     }
 }
