@@ -12,6 +12,7 @@ namespace Atividade3_Xamarin
         {
             InitializeComponent();
             this.Title = "Exercise 3 - SQL";
+
         }
 
         protected override void OnAppearing()
@@ -19,5 +20,16 @@ namespace Atividade3_Xamarin
             base.OnAppearing();
             this.lstStudents.ItemsSource = App.StudentVM.Students;
         }
+
+        void OnSelectStudentCell(object sender, System.EventArgs e)
+        {
+            var student = ((Student) ((ViewCell)sender).BindingContext);
+
+            App.StudentVM.isEditing = true;
+            App.StudentVM.StudentModel = student;
+
+            App.Current.MainPage.Navigation.PushAsync(new NewStudentView(){ BindingContext = App.StudentVM });
+        }
+
     }
 }

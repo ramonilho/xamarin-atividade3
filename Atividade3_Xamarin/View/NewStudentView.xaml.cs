@@ -14,13 +14,14 @@ namespace Atividade3_Xamarin
         public NewStudentView()
         {
             InitializeComponent();
+            Title = App.StudentVM.isEditing ? "Edit student info" : "Add new student";
         }
 
         public NewStudentView(Guid Id)
         {
             InitializeComponent();
 
-            var student = App.StudentVM.StudentModel.GetStudent(Id);
+            Student student = App.StudentVM.StudentModel.GetStudent(Id);
             txtName.Text = student.Name;
             txtRM.Text = student.RM;
             txtEmail.Text = student.Email;
@@ -30,35 +31,16 @@ namespace Atividade3_Xamarin
         }
         #endregion
 
-        //protected override void OnAppearing()
-        //{
-        //    base.OnAppearing();
-        //    txtName.Text = txtRM.Text = txtEmail.Text = string.Empty;
-        //}
-
-        public void onSaving(object sender, EventArgs args)
+        protected override void OnDisappearing()
         {
-            Student student = new Student()
-            {
-                Name = txtName.Text,
-                RM = txtRM.Text,
-                Email = txtEmail.Text,
-                Approved = isApproved.IsToggled
-            };
-
-            App.StudentVM.StudentModel.Save(student);
-
-            Navigation.PopAsync();
-        }
-
-        public void onCancel(object sender, EventArgs args) {
+            base.OnDisappearing();
             resetFields();
-            Navigation.PopAsync();
         }
 
         public void resetFields() {
             txtName.Text = txtRM.Text = txtEmail.Text = string.Empty;
             isApproved.IsToggled = false;
+            App.StudentVM.isEditing = false;
         }
 
 

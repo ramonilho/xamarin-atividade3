@@ -17,21 +17,26 @@ namespace Atividade3_Xamarin
         {
             get
             {
-                return new ObservableCollection<Student>(StudentModel.FetchStudentList());
+                return new ObservableCollection<Student>(StudentModel.FetchStudentList().OrderBy(st => st.Name.ToLower())); // sorting list
             }
         }
 
         // UI Events
         public OnAddStudentCMD OnAddStudentCMD { get; }
+        public OnDeleteStudentCMD OnDeleteStudentCMD { get; }
         public ICommand OnNewCMD { get; private set; }
         public ICommand OnExitCMD { get; private set; }
+
+        // Helpers
+        public bool isEditing { get; set; }
 
         public StudentViewModel()
         {
             StudentModel = new Student();
             OnAddStudentCMD = new OnAddStudentCMD(this);
-            OnExitCMD = new Command(OnExit);
+            OnDeleteStudentCMD = new OnDeleteStudentCMD(this);
             OnNewCMD = new Command(OnNew);
+            OnExitCMD = new Command(OnExit);
         }
 
         public void Add(Student paramStudent)
@@ -41,12 +46,41 @@ namespace Atividade3_Xamarin
                 if (paramStudent == null)
                     throw new Exception("Invalid user");
 
-                paramStudent.Id = Guid.NewGuid();
+                if (paramStudent.Id.Equals(Guid.Empty)) {
+                    // If this is empty, means that is a new student
+                    paramStudent.Id = Guid.NewGuid();
+                }
 
-                Students.Add(paramStudent);
+                // Fetch student from database if exists
+                Student fetchedStudent = App.StudentVM.StudentModel.GetStudent(paramStudent.Id);
 
-                App.StudentVM.StudentModel.Save(paramStudent);
+                // Set properties
+                fetchedStudent.Name = paramStudent.Name;
+                fetchedStudent.RM = paramStudent.RM;
+                fetchedStudent.Email = paramStudent.Email;
+                fetchedStudent.Approved = paramStudent.Approved;
 
+                // Save
+                App.StudentVM.StudentModel.Save(fetchedStudent);
+
+                // Back to previous page
+                App.Current.MainPage.Navigation.PopAsync();
+            }
+            catch (Exception)
+            {
+                App.Current.MainPage.DisplayAlert("Failed", "Unexpected error", "OK");
+            }
+        }
+
+        public void Delete(Student paramStudent) {
+            try {
+                if (paramStudent == null)
+                    throw new Exception("Invalid user");
+
+                // Fetch student from database if exists
+                App.StudentVM.StudentModel.DeleteStudent(paramStudent.Id);
+
+                // Back to previous page
                 App.Current.MainPage.Navigation.PopAsync();
             }
             catch (Exception)
@@ -99,6 +133,32 @@ namespace Atividade3_Xamarin
         public void Execute(object parameter)
         {
             studentVM.Add(parameter as Student);
+        }
+    }
+
+    public class OnDeleteStudentCMD : ICommand
+    {
+        StudentViewModel studentVM;
+
+        public OnDeleteStudentCMD(StudentViewModel paramVM)
+        {
+            studentVM = paramVM;
+        }
+
+        public event EventHandler CanExecuteChanged;
+
+        public void DeleteCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+
+        public bool CanExecute(object parameter)
+        {
+            if (parameter != null) return true;
+
+            return false;
+        }
+
+        public void Execute(object parameter)
+        {
+            studentVM.Delete(parameter as Student);
         }
     }
 

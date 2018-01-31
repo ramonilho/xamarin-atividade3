@@ -42,17 +42,19 @@ namespace Atividade3_Xamarin
         {
             lock (locker)
             {
-                return (from c in database.Table<Student>() select c);
+                return (from s in database.Table<Student>() 
+                        orderby s.Name
+                        select s);
             }
         }
         public Student GetStudent(Guid Id)
         {
             lock (locker)
             {
-                return database.Table<Student>().Where(c => c.Id == Id).FirstOrDefault();
+                return database.Table<Student>().Where(s => s.Id == Id).FirstOrDefault();
             }
         }
-        public int DeleteStudent(int Id)
+        public int DeleteStudent(Guid Id)
         {
             lock (locker)
             {

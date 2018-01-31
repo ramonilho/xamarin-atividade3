@@ -13,10 +13,11 @@
                         Command="{Binding OnAddStudentCMD}"
                         CommandParameter="{Binding StudentModel}" />
                 <Button x:Name="btnCancel" Text="Cancel" Command="{Binding OnExitCMD}" />
+                <Button x:Name="btnDelete" Text="Delete" Command="{Binding OnDeleteStudentCMD}" CommandParameter="{Binding StudentModel}" IsVisible="{Binding isEditing}" />
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label Text="Approved?"/>
-                <Switch x:Name="isApproved" />
+                <Switch x:Name="isApproved" IsToggled="{Binding StudentModel.Approved}"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
